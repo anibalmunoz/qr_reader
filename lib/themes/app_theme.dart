@@ -9,6 +9,5 @@ class AppTheme {
       primaryColor: Colors.red,
       appBarTheme: AppBarTheme(backgroundColor: AppColor.shared.primaryColor),
       floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: AppColor.shared.primaryColor),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: AppColor.shared.primaryColor, backgroundColor: AppColor.shared.primaryColor));
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedItemColor: AppColor.shared.primaryColor));
 }
