@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qr_reader/models/scan_model.dart';
 import 'package:qr_reader/pages/direcciones_page.dart';
-import 'package:qr_reader/pages/maps_history.dart';
-import 'package:qr_reader/repositories/db_repository.dart';
+import 'package:qr_reader/pages/maps_page.dart';
+import 'package:qr_reader/providers/scan_list_provider.dart';
 import 'package:qr_reader/providers/ui_provider.dart';
+import 'package:qr_reader/utils/app_config.dart';
 import 'package:qr_reader/widgets/custom_navigator_bar.dart';
 
 import '../widgets/scan_button.dart';
@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _customAppbar(),
+      appBar: _customAppbar(context),
       body: const _HomePageBody(),
       bottomNavigationBar: const CustomNavigationBar(),
       floatingActionButton: const ScanButton(),
@@ -24,11 +24,12 @@ class HomePage extends StatelessWidget {
   }
 }
 
-AppBar _customAppbar() {
+AppBar _customAppbar(context) {
+  final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
   return AppBar(
     centerTitle: true,
     title: const Text("Historial"),
-    actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.delete_forever))],
+    actions: [IconButton(onPressed: () => scanListProvider.borrarTodos(), icon: const Icon(Icons.delete_forever))],
   );
 }
 
@@ -39,12 +40,13 @@ class _HomePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
-    final tempScan = ScanModel(valor: "https://google.com");
-    DBProvider.db.getScanById(1);
+    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
     switch (currentIndex) {
       case 0:
+        scanListProvider.cargarScansPorTipo(AppConfig.shared.geo);
         return const MapsPage();
       case 1:
+        scanListProvider.cargarScansPorTipo(AppConfig.shared.http);
         return const DirectionsPage();
       default:
         return const MapsPage();

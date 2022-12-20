@@ -6,8 +6,9 @@ class AppTheme {
   static final AppTheme shared = AppTheme._privateConstructor();
 
   ThemeData themeData = ThemeData(
-      primaryColor: Colors.red,
-      appBarTheme: AppBarTheme(backgroundColor: AppColor.shared.primaryColor),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: AppColor.shared.primaryColor),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedItemColor: AppColor.shared.primaryColor));
+    primaryColor: AppColor.shared.primaryColor,
+    appBarTheme: AppBarTheme(backgroundColor: AppColor.shared.primaryColor),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: AppColor.shared.primaryColor),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedItemColor: AppColor.shared.primaryColor),
+  );
 }
