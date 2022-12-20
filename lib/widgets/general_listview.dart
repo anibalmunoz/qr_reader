@@ -16,6 +16,7 @@ class GeneralListViewWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: scans.length,
       itemBuilder: (context, index) => Dismissible(
+        direction: DismissDirection.startToEnd,
         key: UniqueKey(),
         background: Container(color: Colors.red),
         onDismissed: (direction) =>
