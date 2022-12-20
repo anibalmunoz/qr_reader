@@ -5,6 +5,7 @@ import 'package:qr_reader/widgets/general_listview.dart';
 
 class MapsPage extends StatelessWidget {
   const MapsPage({Key? key}) : super(key: key);
+  static const String routeName = "maps";
 
   @override
   Widget build(BuildContext context) {

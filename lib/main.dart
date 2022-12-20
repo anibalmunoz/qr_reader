@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'QR Reader',
         debugShowCheckedModeBanner: false,
-        initialRoute: "home",
-        routes: {"home": (_) => const HomePage(), "mapa": (_) => const MapPage()},
+        initialRoute: HomePage.routeName,
+        routes: {HomePage.routeName: (_) => const HomePage(), MapPage.routeName: (_) => const MapPage()},
         theme: AppTheme.shared.themeData,
       ),
     );

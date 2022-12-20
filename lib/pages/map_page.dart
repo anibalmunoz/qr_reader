@@ -6,6 +6,7 @@ import 'package:qr_reader/models/scan_model.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
+  static const String routeName = "mapa";
 
   @override
   State<MapPage> createState() => _MapPageState();
